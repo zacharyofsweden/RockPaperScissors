@@ -2,6 +2,7 @@
 let humanScore = 0;
 let computerScore = 0;
 let isTheSame = false;
+let roundCount = 0;
 
 //Functions 
 
@@ -35,7 +36,7 @@ function getUserChoice() {
     else if (userChoice.toLowerCase() == "scissor") {
         return "Scissor"
     }
-    else if (userChoice.toLowerCase == "paper") {
+    else if (userChoice.toLowerCase() == "paper") {
         return "Paper"
     }
     //Make Sure that if user picks wrong it notifys them.
@@ -45,6 +46,7 @@ function getUserChoice() {
 
 }
 
+//Displays the current count and who won
 function roundMessage(humanWonRound, computerwonround) {
 
     if (isTheSame == true) {
@@ -53,24 +55,25 @@ function roundMessage(humanWonRound, computerwonround) {
 
     else if (humanWonRound == true) {
         humanScore++;
-        console.log(humanScore)
         console.log("you won Score is : User score " + humanScore + " - " + computerScore);
     }
     else if (computerwonround == true) {
         computerScore++;
-        console.log(computerScore)
         console.log("you lost Score is : User score " + humanScore + " - " + computerScore);
     }
     humanWonRound = false;
     computerwonround = false;
 }
+
 //Logic to use the choices and check who won 
 function playRound(humanChoice, computerchoice) {
+    //Variabals for the roundFunction, 
+    isTheSame = false;
     let humanIsRoundWinner = false;
     let computerIsRoundWinner = false;
     //Todo Try to figure out a easier solution to check winner
-    //Todo  FInd a way to not repeat console logs Maybe using a bool (humanWinner or computerWinner)
-
+    console.log("You picked: " + humanChoice)
+    console.log("The Computer picked: " + computerchoice)
     if (humanChoice == computerchoice) {
         isTheSame = true
         roundMessage(humanIsRoundWinner, computerIsRoundWinner);
@@ -117,25 +120,11 @@ function playRound(humanChoice, computerchoice) {
 // Play out a whole game 
 function playGame() {
     //Use a loop to test it out
-    let HumanSelection = getUserChoice();
-    let pcSelection = getComputerChoice();
-    playRound(HumanSelection, pcSelection)
-
-    HumanSelection = getUserChoice();
-    pcSelection = getComputerChoice();
-    playRound(HumanSelection, pcSelection)
-
-    HumanSelection = getUserChoice();
-    pcSelection = getComputerChoice();
-    playRound(HumanSelection, pcSelection)
-
-    HumanSelection = getUserChoice();
-    pcSelection = getComputerChoice();
-    playRound(HumanSelection, pcSelection)
-
-    HumanSelection = getUserChoice();
-    pcSelection = getComputerChoice();
-    playRound(HumanSelection, pcSelection)
+    for (roundCount; roundCount < 5; roundCount++) {
+        let HumanSelection = getUserChoice();
+        let pcSelection = getComputerChoice();
+        playRound(HumanSelection, pcSelection)
+    }
 
     if (humanScore == computerScore) {
         console.log("It's a tie better luck next time!")
