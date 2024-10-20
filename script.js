@@ -24,6 +24,10 @@ function getComputerChoice() {
 
 //Implement a funcktion for picking for user. 
 function getUserChoice() {
+
+    //Todo  just make it all lower case with stirng method
+
+
     //Uses promt to get players choice
     let userChoice = prompt("Please pick betwen Rock, Scissor and Paper");
 
@@ -47,9 +51,8 @@ function getUserChoice() {
 //Logic to use the choices and check who won 
 function playRound(humanChoice, computerchoice) {
     let isTheSame = false;
-    //figure out if they picked the same
-
-    //if not then isthesame false  
+    //Todo Try to figure out a easier solution to check winner
+    //Todo  FInd a way to not repeat console logs Maybe using a bool (humanWinner or computerWinner)
 
     if (humanChoice == computerchoice) {
         isTheSame = true
@@ -95,6 +98,7 @@ function playRound(humanChoice, computerchoice) {
 }
 // Play out a whole game 
 function playGame() {
+    //Use a loop to test it out
     let HumanSelection = getUserChoice();
     let pcSelection = getComputerChoice();
     playRound(HumanSelection, pcSelection)
