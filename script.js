@@ -22,7 +22,6 @@ function getComputerChoice() {
     }
 }
 
-
 //Implement a funcktion for picking for user. 
 function getUserChoice() {
 
