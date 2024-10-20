@@ -1,7 +1,7 @@
 //Gloabal Variabals
 let humanScore = 0;
 let computerScore = 0;
-
+let isTheSame = false;
 
 //Functions 
 
@@ -25,20 +25,17 @@ function getComputerChoice() {
 //Implement a funcktion for picking for user. 
 function getUserChoice() {
 
-    //Todo  just make it all lower case with stirng method
-
-
     //Uses promt to get players choice
     let userChoice = prompt("Please pick betwen Rock, Scissor and Paper");
 
     //Checks if playerChoice fits any of the options.
-    if (userChoice == "Rock") {
+    if (userChoice.toLowerCase() == "rock") {
         return "Rock"
     }
-    else if (userChoice == "Scissor") {
+    else if (userChoice.toLowerCase() == "scissor") {
         return "Scissor"
     }
-    else if (userChoice == "Paper") {
+    else if (userChoice.toLowerCase == "paper") {
         return "Paper"
     }
     //Make Sure that if user picks wrong it notifys them.
@@ -48,50 +45,71 @@ function getUserChoice() {
 
 }
 
+function roundMessage(humanWonRound, computerwonround) {
+
+    if (isTheSame == true) {
+        console.log("It's a tie! : User score " + humanScore + " - " + computerScore);
+    }
+
+    else if (humanWonRound == true) {
+        humanScore++;
+        console.log(humanScore)
+        console.log("you won Score is : User score " + humanScore + " - " + computerScore);
+    }
+    else if (computerwonround == true) {
+        computerScore++;
+        console.log(computerScore)
+        console.log("you lost Score is : User score " + humanScore + " - " + computerScore);
+    }
+    humanWonRound = false;
+    computerwonround = false;
+}
 //Logic to use the choices and check who won 
 function playRound(humanChoice, computerchoice) {
-    let isTheSame = false;
+    let humanIsRoundWinner = false;
+    let computerIsRoundWinner = false;
     //Todo Try to figure out a easier solution to check winner
     //Todo  FInd a way to not repeat console logs Maybe using a bool (humanWinner or computerWinner)
 
     if (humanChoice == computerchoice) {
         isTheSame = true
-        console.log("It's a tie! : User score " + humanScore + " - " + computerScore);
+        roundMessage(humanIsRoundWinner, computerIsRoundWinner);
     }
 
     if (humanChoice == "Rock" && isTheSame == false) {
         if (computerchoice == "Scissor") {
-            humanScore++;
-            console.log("you won Score is : User score " + humanScore + " - " + computerScore);
+            humanIsRoundWinner = true
+            roundMessage(humanIsRoundWinner, computerIsRoundWinner);
+
         }
 
         else if (computerchoice == "Paper") {
-            computerScore++;
-            console.log("you lost Score is : User score " + humanScore + " - " + computerScore);
+            computerIsRoundWinner = true;
+            roundMessage(humanIsRoundWinner, computerIsRoundWinner);
         }
     }
 
     else if (humanChoice == "Scissor" && isTheSame == false) {
         if (computerchoice == "Paper") {
-            humanScore++;
-            console.log("you won Score is : User score " + humanScore + " - " + computerScore);
+            humanIsRoundWinner = true
+            roundMessage(humanIsRoundWinner, computerIsRoundWinner);
         }
 
         else if (computerchoice == "Rock") {
-            computerScore++;
-            console.log("you lost Score is : User score " + humanScore + " - " + computerScore);
+            computerIsRoundWinner = true;
+            roundMessage(humanIsRoundWinner, computerIsRoundWinner);
         }
     }
 
     else if (humanChoice == "Paper" && isTheSame == false) {
         if (computerchoice == "Scissor") {
-            computerScore++;
-            console.log("you lost Score is : User score " + humanScore + " - " + computerScore);
+            computerIsRoundWinner = true;
+            roundMessage(humanIsRoundWinner, computerIsRoundWinner);
         }
 
         else if (computerchoice == "Rock") {
-            humanScore++;
-            console.log("you won Score is : User score " + humanScore + " - " + computerScore);
+            humanIsRoundWinner = true
+            roundMessage(humanIsRoundWinner, computerIsRoundWinner);
         }
     }
 
