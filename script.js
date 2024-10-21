@@ -80,25 +80,25 @@ function getComputerChoice() {
 
 //Displays the current count and who won
 function roundMessage(humanWonRound, computerwonround) {
-    
+
     if (isTheSame == true) {
-        playingScore.textContent =  "Tie"
+        playingScore.textContent = "Tie! Current score is: User Score " + humanScore + " - " + computerScore + " Computer Score"
     }
 
     else if (humanWonRound == true) {
         humanScore++;
-        playingScore.textContent = "You won!"
-        
+        playingScore.textContent = "You won! Current score is: User Score " + humanScore + " - " + computerScore + " Computer Score"
+
     }
     else if (computerwonround == true) {
         computerScore++;
-        playingScore.textContent = "You lost"
+        playingScore.textContent = "You lost! Current score is: User Score " + humanScore + " - " + computerScore + " Computer Score"
     }
-    
+
     humanWonRound = false;
     computerwonround = false;
-   
 
+    
 }
 
 //Logic to use the choices and check who won 
@@ -107,51 +107,56 @@ function playRound(humanChoice, computerchoice) {
     isTheSame = false;
     humanIsRoundWinner = false;
     computerIsRoundWinner = false;
-    //Todo Try to figure out a easier solution to check winner
-    console.log("You picked: " + humanChoice)
-    console.log("The Computer picked: " + computerchoice)
+    //Todo make a smaller text in display that shows the choices you and pc made
 
+    if (roundCount < 5) {
+        if (humanChoice == computerchoice) {
+            isTheSame = true
+            roundMessage(humanIsRoundWinner, computerIsRoundWinner);
+        }
 
-    if (humanChoice == computerchoice) {
-        isTheSame = true
-        roundMessage(humanIsRoundWinner, computerIsRoundWinner);
+        if (humanChoice == "Rock" && isTheSame == false) {
+            if (computerchoice == "Scissor") {
+                humanIsRoundWinner = true
+                roundMessage(humanIsRoundWinner, computerIsRoundWinner);
+
+            }
+
+            else if (computerchoice == "Paper") {
+                computerIsRoundWinner = true;
+                roundMessage(humanIsRoundWinner, computerIsRoundWinner);
+            }
+        }
+
+        else if (humanChoice == "Scissor" && isTheSame == false) {
+            if (computerchoice == "Paper") {
+                humanIsRoundWinner = true
+                roundMessage(humanIsRoundWinner, computerIsRoundWinner);
+            }
+
+            else if (computerchoice == "Rock") {
+                computerIsRoundWinner = true;
+                roundMessage(humanIsRoundWinner, computerIsRoundWinner);
+            }
+        }
+
+        else if (humanChoice == "Paper" && isTheSame == false) {
+            if (computerchoice == "Scissor") {
+                computerIsRoundWinner = true;
+                roundMessage(humanIsRoundWinner, computerIsRoundWinner);
+            }
+
+            else if (computerchoice == "Rock") {
+                humanIsRoundWinner = true
+                roundMessage(humanIsRoundWinner, computerIsRoundWinner);
+            }
+        }
+        roundCount++;
+    }
+    else {
+        playingScore.textContent = "The end please refrech the page to try again!"
+        //HEre will be a text that says final score 
     }
 
-    if (humanChoice == "Rock" && isTheSame == false) {
-        if (computerchoice == "Scissor") {
-            humanIsRoundWinner = true
-            roundMessage(humanIsRoundWinner, computerIsRoundWinner);
-
-        }
-
-        else if (computerchoice == "Paper") {
-            computerIsRoundWinner = true;
-            roundMessage(humanIsRoundWinner, computerIsRoundWinner);
-        }
-    }
-
-    else if (humanChoice == "Scissor" && isTheSame == false) {
-        if (computerchoice == "Paper") {
-            humanIsRoundWinner = true
-            roundMessage(humanIsRoundWinner, computerIsRoundWinner);
-        }
-
-        else if (computerchoice == "Rock") {
-            computerIsRoundWinner = true;
-            roundMessage(humanIsRoundWinner, computerIsRoundWinner);
-        }
-    }
-
-    else if (humanChoice == "Paper" && isTheSame == false) {
-        if (computerchoice == "Scissor") {
-            computerIsRoundWinner = true;
-            roundMessage(humanIsRoundWinner, computerIsRoundWinner);
-        }
-
-        else if (computerchoice == "Rock") {
-            humanIsRoundWinner = true
-            roundMessage(humanIsRoundWinner, computerIsRoundWinner);
-        }
-    }
 
 }
