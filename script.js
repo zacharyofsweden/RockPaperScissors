@@ -1,3 +1,11 @@
+//Todo Polish
+//More styling and hover effects
+//flexbox and center the texts 
+// Text that better display top if you won or lost or tie mid current score and bottom your choice and computer choice 
+
+
+
+
 //Gloabal Variabals
 let humanScore = 0;
 let computerScore = 0;
@@ -97,8 +105,6 @@ function getComputerChoice() {
 }
 
 
-//Todo Fix a intital message
-
 //Displays the current count and who won
 function roundMessage(humanWonRound, computerwonround) {
 
@@ -131,7 +137,7 @@ function playRound(humanChoice, computerchoice) {
     isTheSame = false;
     humanIsRoundWinner = false;
     computerIsRoundWinner = false;
-    //Todo make a smaller text in display that shows the choices you and pc made
+ 
     playingParagraphhuman.textContent = "Your choice: " + humanChoice
     playingParagrapcomputer.textContent = "Computer choice: " + computerchoice
     if (roundCount < 5) {
