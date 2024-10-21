@@ -36,7 +36,7 @@ playingParagraphhuman.textContent = "No choice yet"
 playingParagrapcomputer.textContent = "No computer choice yet"
 
 // Styling
-scoreAndUiContainer.style.backgroundColor = "lightPink"
+
 
 //Rock
 buttonRock.textContent = "Rock"
@@ -104,16 +104,19 @@ function roundMessage(humanWonRound, computerwonround) {
 
     if (isTheSame == true) {
         playingScore.textContent = "Tie! Current score is Score: " + humanScore + " - " + computerScore
+        scoreAndUiContainer.style.backgroundColor = "lightYellow"
     }
 
     else if (humanWonRound == true) {
         humanScore++;
         playingScore.textContent = "You won! Current score is Score:  " + humanScore + " - " + computerScore
+        scoreAndUiContainer.style.backgroundColor = "lightGreen"
 
     }
     else if (computerwonround == true) {
         computerScore++;
         playingScore.textContent = "You lost! Current score is Score:  " + humanScore + " - " + computerScore
+        scoreAndUiContainer.style.backgroundColor = "lightPink"
     }
 
     humanWonRound = false;
