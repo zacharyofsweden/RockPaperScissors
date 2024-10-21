@@ -27,7 +27,7 @@ divContainer.appendChild(buttonSciscor)
 
 
 //Displaying score and user choice
-playingScore.textContent = test();
+playingScore.textContent = roundMessage(humanIsRoundWinner, computerIsRoundWinner)
 
 
 // Styling
@@ -74,30 +74,30 @@ function getComputerChoice() {
 }
 
 
-function test() {
-    let showScore = "It's a tie! : User score " + humanScore + " - " + computerScore
-    return showScore
-}
 
+
+//Todo Fix a intital message
 
 //Displays the current count and who won
 function roundMessage(humanWonRound, computerwonround) {
-
+    
     if (isTheSame == true) {
-        playingScore.textContent =  test()
+        playingScore.textContent =  "Tie"
     }
 
     else if (humanWonRound == true) {
         humanScore++;
-        playingScore.textContent = test()
+        playingScore.textContent = "You won!"
         
     }
     else if (computerwonround == true) {
         computerScore++;
-        playingScore.textContent = test()
+        playingScore.textContent = "You lost"
     }
+    
     humanWonRound = false;
     computerwonround = false;
+   
 
 }
 
