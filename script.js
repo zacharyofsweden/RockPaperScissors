@@ -15,16 +15,16 @@ const buttonPapper = document.createElement('button')
 const buttonSciscor = document.createElement("button")
 
 //Display section
-const scorKeeper = document.createElement("div")
+const scoreAndUiContainer = document.createElement("div")
 const playingScore = document.createElement("h1")
 const playingParagraphhuman = document.createElement("p")
 const playingParagrapcomputer = document.createElement("p")
 
 //Append
-scorKeeper.appendChild(playingScore)
-scorKeeper.appendChild(playingParagraphhuman)
-scorKeeper.appendChild(playingParagrapcomputer)
-divContainer.appendChild(scorKeeper)
+scoreAndUiContainer.appendChild(playingScore)
+scoreAndUiContainer.appendChild(playingParagraphhuman)
+scoreAndUiContainer.appendChild(playingParagrapcomputer)
+divContainer.appendChild(scoreAndUiContainer)
 divContainer.appendChild(buttonRock)
 divContainer.appendChild(buttonPapper)
 divContainer.appendChild(buttonSciscor)
@@ -36,26 +36,26 @@ playingParagraphhuman.textContent = "No choice yet"
 playingParagrapcomputer.textContent = "No computer choice yet"
 
 // Styling
-
+scoreAndUiContainer.style.backgroundColor = "lightPink"
 
 //Rock
 buttonRock.textContent = "Rock"
 buttonRock.style.padding = "10px"
 buttonRock.style.marginRight = "10px"
-buttonRock.style.backgroundColor = "orange";  
+buttonRock.style.backgroundColor = "orange";
 buttonRock.style.border = "none";
 
-//Rock
+//Papper
 buttonPapper.textContent = "Paper"
 buttonPapper.style.padding = "10px"
 buttonPapper.style.marginRight = "10px"
-buttonPapper.style.backgroundColor = "orange";  
+buttonPapper.style.backgroundColor = "orange";
 buttonPapper.style.border = "none";
 
-//Rock
+//Sciscor
 buttonSciscor.textContent = "Scissor"
 buttonSciscor.style.padding = "10px"
-buttonSciscor.style.backgroundColor = "orange";  
+buttonSciscor.style.backgroundColor = "orange";
 buttonSciscor.style.border = "none";
 
 
@@ -79,18 +79,21 @@ buttonPapper.addEventListener("click", function () {
 
 //Implement a function to pick a sign for computer
 function getComputerChoice() {
-    let choice = Math.random();
+    if (roundCount < 5) {
+        let choice = Math.random();
 
-    //Logic for picking sign.
-    if (choice > 0.666) {
-        return "Rock"
+        //Logic for picking sign.
+        if (choice > 0.666) {
+            return "Rock"
+        }
+        else if (choice > 0.333) {
+            return "Scissor"
+        }
+        else {
+            return "Paper"
+        }
     }
-    else if (choice > 0.333) {
-        return "Scissor"
-    }
-    else {
-        return "Paper"
-    }
+
 }
 
 
@@ -116,7 +119,7 @@ function roundMessage(humanWonRound, computerwonround) {
     humanWonRound = false;
     computerwonround = false;
 
-    
+
 }
 
 //Logic to use the choices and check who won 
