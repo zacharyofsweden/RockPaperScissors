@@ -4,7 +4,47 @@ let computerScore = 0;
 let isTheSame = false;
 let roundCount = 0;
 
+//Dom 
+
+//Create the 3 buttons for the user to chose from
+const buttonRock = document.createElement('button')
+
+const buttonPapper = document.createElement('button')
+
+const buttonSciscor = document.createElement("button")
+
+const scorKeeper = document.createElement("div")
+
+const divContainer = document.querySelector(".container")
+
+divContainer.appendChild(buttonRock)
+divContainer.appendChild(buttonPapper)
+divContainer.appendChild(buttonSciscor)
+divContainer.appendChild(scorKeeper)
+
+scorKeeper.style.color("red")
+scorKeeper.style.width("100px")
+
 //Functions 
+
+buttonRock.addEventListener("click", function () {
+    playRound("Rock", getComputerChoice());
+});
+
+buttonSciscor.addEventListener("click", function () {
+    playRound("Scissor", getComputerChoice());
+});
+
+buttonPapper.addEventListener("click", function () {
+    playRound("Paper", getComputerChoice());
+});
+
+
+
+
+
+
+
 
 //Implement a function to pick a sign for computer
 function getComputerChoice() {
@@ -22,28 +62,10 @@ function getComputerChoice() {
     }
 }
 
+
+
 //Implement a funcktion for picking for user. 
-function getUserChoice() {
 
-    //Uses promt to get players choice
-    let userChoice = prompt("Please pick betwen Rock, Scissor and Paper");
-
-    //Checks if playerChoice fits any of the options.
-    if (userChoice.toLowerCase() == "rock") {
-        return "Rock"
-    }
-    else if (userChoice.toLowerCase() == "scissor") {
-        return "Scissor"
-    }
-    else if (userChoice.toLowerCase() == "paper") {
-        return "Paper"
-    }
-    //Make Sure that if user picks wrong it notifys them.
-    else {
-        userChoice = prompt("Wrong reload page to try again!");
-    }
-
-}
 
 //Displays the current count and who won
 function roundMessage(humanWonRound, computerwonround) {
@@ -116,27 +138,3 @@ function playRound(humanChoice, computerchoice) {
     }
 
 }
-// Play out a whole game 
-function playGame() {
-    //Use a loop to test it out
-    for (roundCount; roundCount < 5; roundCount++) {
-        let HumanSelection = getUserChoice();
-        let pcSelection = getComputerChoice();
-        playRound(HumanSelection, pcSelection)
-    }
-
-    if (humanScore == computerScore) {
-        console.log("It's a tie better luck next time!")
-    }
-    else if (humanScore > computerScore) {
-        console.log("You had a bigger Score Congrats!")
-    }
-    else {
-        console.log("Bahahah you lost!")
-    }
-
-}
-
-//Calls the function
-playGame();
-
