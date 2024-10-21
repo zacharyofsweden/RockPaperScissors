@@ -14,12 +14,16 @@ const buttonRock = document.createElement('button')
 const buttonPapper = document.createElement('button')
 const buttonSciscor = document.createElement("button")
 
-
+//Display section
 const scorKeeper = document.createElement("div")
 const playingScore = document.createElement("h1")
+const playingParagraphhuman = document.createElement("p")
+const playingParagrapcomputer = document.createElement("p")
 
 //Append
 scorKeeper.appendChild(playingScore)
+scorKeeper.appendChild(playingParagraphhuman)
+scorKeeper.appendChild(playingParagrapcomputer)
 divContainer.appendChild(scorKeeper)
 divContainer.appendChild(buttonRock)
 divContainer.appendChild(buttonPapper)
@@ -28,13 +32,33 @@ divContainer.appendChild(buttonSciscor)
 
 //Displaying score and user choice
 playingScore.textContent = roundMessage(humanIsRoundWinner, computerIsRoundWinner)
-
+playingParagraphhuman.textContent = "No choice yet"
+playingParagrapcomputer.textContent = "No computer choice yet"
 
 // Styling
 
+
+//Rock
 buttonRock.textContent = "Rock"
+buttonRock.style.padding = "10px"
+buttonRock.style.marginRight = "10px"
+buttonRock.style.backgroundColor = "orange";  
+buttonRock.style.border = "none";
+
+//Rock
 buttonPapper.textContent = "Paper"
+buttonPapper.style.padding = "10px"
+buttonPapper.style.marginRight = "10px"
+buttonPapper.style.backgroundColor = "orange";  
+buttonPapper.style.border = "none";
+
+//Rock
 buttonSciscor.textContent = "Scissor"
+buttonSciscor.style.padding = "10px"
+buttonSciscor.style.backgroundColor = "orange";  
+buttonSciscor.style.border = "none";
+
+
 
 //Functions 
 
@@ -49,10 +73,6 @@ buttonSciscor.addEventListener("click", function () {
 buttonPapper.addEventListener("click", function () {
     playRound("Paper", getComputerChoice());
 });
-
-
-
-
 
 
 
@@ -74,25 +94,23 @@ function getComputerChoice() {
 }
 
 
-
-
 //Todo Fix a intital message
 
 //Displays the current count and who won
 function roundMessage(humanWonRound, computerwonround) {
 
     if (isTheSame == true) {
-        playingScore.textContent = "Tie! Current score is: User Score " + humanScore + " - " + computerScore + " Computer Score"
+        playingScore.textContent = "Tie! Current score is Score: " + humanScore + " - " + computerScore
     }
 
     else if (humanWonRound == true) {
         humanScore++;
-        playingScore.textContent = "You won! Current score is: User Score " + humanScore + " - " + computerScore + " Computer Score"
+        playingScore.textContent = "You won! Current score is Score:  " + humanScore + " - " + computerScore
 
     }
     else if (computerwonround == true) {
         computerScore++;
-        playingScore.textContent = "You lost! Current score is: User Score " + humanScore + " - " + computerScore + " Computer Score"
+        playingScore.textContent = "You lost! Current score is Score:  " + humanScore + " - " + computerScore
     }
 
     humanWonRound = false;
@@ -108,7 +126,8 @@ function playRound(humanChoice, computerchoice) {
     humanIsRoundWinner = false;
     computerIsRoundWinner = false;
     //Todo make a smaller text in display that shows the choices you and pc made
-
+    playingParagraphhuman.textContent = "Your choice: " + humanChoice
+    playingParagrapcomputer.textContent = "Computer choice: " + computerchoice
     if (roundCount < 5) {
         if (humanChoice == computerchoice) {
             isTheSame = true
